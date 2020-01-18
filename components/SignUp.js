@@ -1,4 +1,5 @@
 import React from 'react';
+import normalize from 'react-native-normalize';
 import {
     StyleSheet,
     View,
@@ -34,7 +35,7 @@ import {
    render(){
    return <View style={styles.textInputForm}>
             <TextInput
-             style={this.state.fullNameFieldActive?styles.textInputActive:styles.textInput}
+             style={[styles.textInput,this.state.fullNameFieldActive?styles.textInputActive:null]}
             onChangeText={this.inputNameChangeHandler}
             placeholder = "Full Name"
             value={this.state.fullName}
@@ -42,7 +43,7 @@ import {
             onBlur={()=>this.setState({fullNameFieldActive:false})}
             />
             <TextInput
-             style={this.state.emailFieldActive?styles.textInputActive:styles.textInput}
+              style={[styles.textInput,this.state.emailFieldActive?styles.textInputActive:""]}
             placeholder = "Email" 
             onChangeText={this.inputEmailChangeHandler}
             value={this.state.enterEmail}
@@ -50,7 +51,7 @@ import {
             onBlur={()=>this.setState({emailFieldActive:false})}
             />
              <TextInput
-             style={this.state.phoneFieldActive?styles.textInputActive:styles.textInput}
+             style={[styles.textInput,this.state.phoneFieldActive?styles.textInputActive:""]}
             onChangeText={this.inputPhoneChangeHandler}
             placeholder = "Phone"
             value={this.state.enterPhone}
@@ -58,7 +59,7 @@ import {
             onBlur={()=>this.setState({phoneFieldActive:false})}
             />
             <TextInput
-             style={this.state.passwdFieldActive?styles.textInputActive:styles.textInput}
+             style={[styles.textInput,this.state.passwdFieldActive?styles.textInputActive:""]}
             onChangeText={this.inputPasswdChangeHandler}
             secureTextEntry={true} 
             placeholder = "Password"
@@ -76,25 +77,19 @@ const styles = StyleSheet.create({
      alignItems: "center"
      },
      textInput:{
-        fontSize: 18,
-        lineHeight: 48,
-        backgroundColor: '#ebedef',
-        borderRadius:5,
-        margin: 10,
-        width: 300,
-        height:50
-     },
-     textInputActive:{
-         borderColor: "#007BFF",
-         backgroundColor:"white",
-         borderWidth: 1,
-         fontSize: 18,
-         lineHeight: 48,
-         borderRadius:5,
-         margin: 10,
-         width: 300,
-         height:50
-     }
+        fontSize: normalize(18),
+        lineHeight: normalize(48),
+       backgroundColor: '#ebedef',
+       borderRadius:normalize(5),
+       margin: normalize(10),
+       width: "88%",
+       height:normalize(50)
+    },
+    textInputActive:{
+        borderColor: "#007BFF",
+        backgroundColor:"white",
+        borderWidth: normalize(2)
+    }
  });
  
  

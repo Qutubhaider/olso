@@ -1,4 +1,5 @@
 import React from 'react';
+import normalize from 'react-native-normalize';
 import {
     StyleSheet,
     View,
@@ -34,16 +35,16 @@ import {
    render(){
         return <View style={styles.textInputForm}>
                 <TextInput
-                style={this.state.emailFieldActive?styles.textInputActive:styles.textInput}
+                style={[styles.textInput,this.state.emailFieldActive?styles.textInputActive:""]}
                 placeholder = "Email" 
                 onFocus={()=>this.setState({emailFieldActive:true})}
                 onBlur={()=>this.setState({emailFieldActive:false})}
                 onChangeText={this.inputEmailChangeHandler}
                 value={this.state.enterPhone}
-                textContentType={"emailAddress"}
+                textContentType="emailAddress"
                 />
                 <TextInput
-                style={this.state.passwdFieldActive?styles.textInputActive:styles.textInput}
+                style={[styles.textInput,this.state.passwdFieldActive?styles.textInputActive:""]}
                 onChangeText={this.inputPasswdChangeHandler}
                 secureTextEntry={true} 
                 placeholder = "Password"
@@ -60,13 +61,13 @@ import {
                 <View style={{margin:20}}>
                 <Text>Please enter your registered Email ID. We will send you a link to recover your account.</Text>
                  <TextInput
-                style={this.state.emailFieldActive?styles.textInputActive:styles.textInput}
+                style={[styles.textInput,this.state.emailFieldActive?styles.textInputActive:""]}
                 placeholder = "Email" 
                 onFocus={()=>this.setState({emailFieldActive:true})}
                 onBlur={()=>this.setState({emailFieldActive:false})}
                 onChangeText={this.inputEmailChangeHandler}
                 value={this.state.enterPhone}
-                textContentType={"emailAddress"}
+                textContentType="emailAddress"
                 />
                 <View style={{flexDirection:'row',justifyContent:"space-evenly"}}>
                 <Text onPress={() => {
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
         textAlign:"center",
         opacity: 0.4,
         marginTop:20,
-        fontSize: 15
+        fontSize: normalize(15)
     },
     textInputForm:{
         flexDirection:"column",
@@ -104,24 +105,18 @@ const styles = StyleSheet.create({
         alignItems: "center"
         },
         textInput:{
-           fontSize: 18,
-           lineHeight: 48,
+            fontSize: normalize(18),
+            lineHeight: normalize(48),
            backgroundColor: '#ebedef',
-           borderRadius:5,
-           margin: 10,
-           width: 300,
-           height:50
+           borderRadius:normalize(5),
+           margin: normalize(10),
+           width: "88%",
+           height:normalize(50)
         },
         textInputActive:{
             borderColor: "#007BFF",
             backgroundColor:"white",
-            borderWidth: 1,
-            fontSize: 18,
-            lineHeight: 48,
-            borderRadius:5,
-            margin: 10,
-            width: 300,
-            height:50
+            borderWidth: normalize(2)
         },
     overlay:{
         flex:1,
